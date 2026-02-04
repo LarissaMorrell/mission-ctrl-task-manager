@@ -1,3 +1,5 @@
+import '@/components/molecules/ErrorMessage.css';
+
 interface ErrorMessageProps {
   message: string;
   onDismiss?: () => void;

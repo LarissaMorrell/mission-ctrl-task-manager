@@ -1,26 +1,43 @@
 import { useState } from 'react';
-import { useMissionTasks } from './hooks/useMissionTasks';
-import { MissionTaskForm } from './components/MissionTaskForm';
-import { MissionTaskList } from './components/MissionTaskList';
-import { ErrorMessage } from './components/ErrorMessage';
-import './App.css';
+import { useMissionTasks } from '@/hooks/useMissionTasks';
+import { MissionTaskForm } from '@/components/MissionTaskForm';
+import { MissionTaskList } from '@/components/molecules/MissionTaskList';
+import { ErrorMessage } from '@/components/molecules/ErrorMessage';
+import { AddTaskButton } from '@/components/atoms/AddTaskButton';
+import '@/App.css';
 
 function App() {
   const { missionTasks, loading, error, createMissionTask, updateMissionTask, deleteMissionTask } = useMissionTasks();
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleSubmit = async (missionTask: any) => {
     if (editingId) {
       await updateMissionTask(editingId, missionTask);
       setEditingId(null);
+      setIsFormVisible(false);
     } else {
       await createMissionTask(missionTask);
+      setIsFormVisible(false);
     }
   };
 
   const handleEdit = (id: number) => {
     setEditingId(id);
+    setIsFormVisible(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleCancelForm = () => {
+    setEditingId(null);
+    setIsFormVisible(false);
+  };
+
+  const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+    if (!isFormVisible) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleStatusChange = async (id: number, status: 'Pending' | 'InProgress' | 'Complete') => {
@@ -42,15 +59,23 @@ function App() {
         <p>Simple and effective mission task management</p>
       </header>
 
+      <AddTaskButton isOpen={isFormVisible} onClick={toggleFormVisibility} />
+
       <main className="app-main">
         {error && <ErrorMessage message={error} />}
 
-        <MissionTaskForm
-          onSubmit={handleSubmit}
-          editingMissionTask={missionTasks.find((mt) => mt.id === editingId)}
-          onCancel={() => setEditingId(null)}
-        />
+        {/* Mission Task Form - Conditionally Rendered */}
+        {isFormVisible && (
+          <div className="form-container">
+            <MissionTaskForm
+              onSubmit={handleSubmit}
+              editingMissionTask={missionTasks.find((mt) => mt.id === editingId)}
+              onCancel={handleCancelForm}
+            />
+          </div>
+        )}
 
+        {/* Mission Task List */}
         {loading ? (
           <div className="loading">Loading mission tasks...</div>
         ) : (

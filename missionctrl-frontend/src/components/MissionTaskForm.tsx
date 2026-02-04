@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MissionTask, CreateUpdateMissionTask } from '../types/missionTask';
+import { MissionTask, CreateUpdateMissionTask } from '@/types/missionTask';
 
 interface MissionTaskFormProps {
   onSubmit: (missionTask: CreateUpdateMissionTask) => Promise<void>;

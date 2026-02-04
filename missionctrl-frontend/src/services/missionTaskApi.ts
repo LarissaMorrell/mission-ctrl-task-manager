@@ -1,4 +1,4 @@
-import { MissionTask, CreateUpdateMissionTask } from '../types/missionTask';
+import { MissionTask, CreateUpdateMissionTask } from '@/types/missionTask';
 
 const API_BASE_URL = 'http://localhost:5242/api';
 

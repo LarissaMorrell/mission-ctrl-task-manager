@@ -1,4 +1,4 @@
-import { MissionTask } from '../types/missionTask';
+import { MissionTask } from '@/types/missionTask';
 
 interface MissionTaskItemProps {
   missionTask: MissionTask;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { MissionTask, CreateUpdateMissionTask } from '../types/missionTask';
-import { missionTaskApi } from '../services/missionTaskApi';
+import { MissionTask, CreateUpdateMissionTask } from '@/types/missionTask';
+import { missionTaskApi } from '@/services/missionTaskApi';
 
 export function useMissionTasks() {
   const [missionTasks, setMissionTasks] = useState<MissionTask[]>([]);

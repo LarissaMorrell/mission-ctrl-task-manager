@@ -1,0 +1,60 @@
+.fab {
+  /* Reset all default button styles */
+  all: unset;
+
+  /* Position */
+  position: fixed;
+  top: 7rem;
+  right: 2rem;
+
+  /* Size */
+  width: 64px;
+  height: 64px;
+
+  /* Shape */
+  border-radius: 50%;
+
+  /* Appearance */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Behavior */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.fab svg {
+  /* Ensure SVG is centered and doesn't shrink */
+  flex-shrink: 0;
+  display: block;
+}
+
+.fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 24px rgba(102, 126, 234, 0.6);
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .fab {
+    width: 56px;
+    height: 56px;
+    right: 1rem;
+    top: 6rem;
+  }
+
+  .fab svg {
+    width: 24px;
+    height: 24px;
+  }
+}

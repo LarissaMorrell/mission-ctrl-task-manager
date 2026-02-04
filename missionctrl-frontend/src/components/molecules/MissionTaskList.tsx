@@ -1,5 +1,5 @@
-import { MissionTask } from '../types/missionTask';
-import { MissionTaskItem } from './MissionTaskItem';
+import { MissionTask } from '@/types/missionTask';
+import { MissionTaskItem } from '@/components/molecules/MissionTaskItem';
 
 interface MissionTaskListProps {
   missionTasks: MissionTask[];
