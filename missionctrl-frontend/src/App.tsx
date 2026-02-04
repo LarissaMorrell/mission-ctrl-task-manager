@@ -74,8 +74,6 @@ function App() {
             />
           </div>
         )}
-
-        {/* Mission Task List */}
         {loading ? (
           <div className="loading">Loading mission tasks...</div>
         ) : (
