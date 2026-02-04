@@ -81,7 +81,7 @@ mission-ctrl-task-manager/
 ### Backend: Why Minimal API?
 - **Simpler than Controllers** for CRUD operations
 - **Less boilerplate** code to maintain
-- **Easier to understand** for code reviewers
+- **Easier to understand** and maintain
 - **Sufficient** for this application scope
 
 ### Backend: Why SQLite?
@@ -162,7 +162,7 @@ mission-ctrl-task-manager/
 
 ## 📝 Design Principles
 
-1. **Keep it Simple** - Avoid over-engineering for interview scope
+1. **Keep it Simple** - Avoid over-engineering
 2. **Production-Ready** - Include validation, error handling, and documentation
 3. **Clean Code** - Clear naming, proper structure, and comments where needed
 4. **Type Safety** - Full TypeScript and C# type coverage
@@ -175,9 +175,9 @@ To keep the project appropriately scoped:
 - ❌ **Authentication** - Adds significant complexity for MVP
 - ❌ **Redux** - Custom hooks sufficient for this scope
 - ❌ **Repository Pattern** - Over-engineering for Minimal API
-- ❌ **Unit Tests** - Would add to interview project scope
+- ❌ **Unit Tests** - Kept focused on core functionality
 - ❌ **Docker** - Not required for local development
-- ❌ **CI/CD** - Out of scope for take-home test
+- ❌ **CI/CD** - Kept focused on application development
 
 ## 🔮 Future Enhancements
 
@@ -236,7 +236,3 @@ If this were a real production application, consider adding:
 6. **Code quality** - readable, maintainable, and well-structured
 7. **User experience** - responsive design, error handling, loading states
 8. **Communication** - clear documentation and thoughtful decisions
-
----
-
-Built with ❤️ for a full-stack developer interview take-home test.
