@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MissionCtrlApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6170c182c217cd52a0a216e264979e9202c203f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MissionCtrlApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MissionCtrlApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
