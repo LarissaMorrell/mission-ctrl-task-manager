@@ -1,0 +1,36 @@
+@MissionCtrlApi_HostAddress = http://localhost:5242
+
+### Get all mission tasks
+GET {{MissionCtrlApi_HostAddress}}/api/missionTasks
+Accept: application/json
+
+### Get single mission task
+GET {{MissionCtrlApi_HostAddress}}/api/missionTasks/1
+Accept: application/json
+
+### Create new mission task
+POST {{MissionCtrlApi_HostAddress}}/api/missionTasks
+Content-Type: application/json
+
+{
+  "title": "Test Mission Task",
+  "description": "This is a test mission task",
+  "status": "Pending",
+  "dueDate": "2026-12-31"
+}
+
+### Update mission task
+PUT {{MissionCtrlApi_HostAddress}}/api/missionTasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated Mission Task",
+  "description": "This mission task has been updated",
+  "status": "InProgress",
+  "dueDate": "2026-12-31"
+}
+
+### Delete mission task
+DELETE {{MissionCtrlApi_HostAddress}}/api/missionTasks/1
+
+###
