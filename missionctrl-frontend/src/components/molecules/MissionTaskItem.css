@@ -126,6 +126,32 @@
   color: #333;
 }
 
+.due-date.overdue {
+  color: #dc2626;
+  font-weight: 600;
+  background: #fef2f2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #fecaca;
+}
+
+.due-date.overdue strong {
+  color: #dc2626;
+}
+
+.due-date.warning {
+  color: #b45309;
+  font-weight: 600;
+  background: #fffbeb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #fcd34d;
+}
+
+.due-date.warning strong {
+  color: #b45309;
+}
+
 .mission-task-footer {
   display: flex;
   align-items: center;

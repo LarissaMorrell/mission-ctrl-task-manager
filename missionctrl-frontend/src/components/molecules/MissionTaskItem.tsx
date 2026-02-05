@@ -15,6 +15,21 @@ export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange 
     return new Date(dateString).toLocaleDateString();
   };
 
+  const getDueDateStatus = (dateString: string | null): 'overdue' | 'warning' | null => {
+    if (!dateString) return null;
+    const dueDate = new Date(dateString);
+    const today = new Date();
+
+    const isSameDay =
+      dueDate.getFullYear() === today.getFullYear() &&
+      dueDate.getMonth() === today.getMonth() &&
+      dueDate.getDate() === today.getDate();
+
+    if (isSameDay) return 'warning';
+    if (dueDate < today) return 'overdue';
+    return null;
+  };
+
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this mission task?')) {
       onDelete(missionTask.id);
@@ -52,7 +67,7 @@ export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange 
         </div>
 
         {missionTask.dueDate && (
-          <div className="due-date">
+          <div className={`due-date ${getDueDateStatus(missionTask.dueDate) ?? ''}`.trim()}>
             <strong>Due:</strong> {formatDate(missionTask.dueDate)}
           </div>
         )}
