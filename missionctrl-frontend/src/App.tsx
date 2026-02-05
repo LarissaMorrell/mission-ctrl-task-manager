@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
+import { CreateUpdateMissionTask, MissionTaskStatus } from '@/types/missionTask';
 import { useMissionTasks } from '@/hooks/useMissionTasks';
 import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
@@ -15,7 +15,7 @@ function App() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
 
-  const handleSubmit = async (missionTask: MissionTask) => {
+  const handleSubmit = async (missionTask: CreateUpdateMissionTask) => {
     if (editingId) {
       await updateMissionTask(editingId, missionTask);
       setEditingId(null);
