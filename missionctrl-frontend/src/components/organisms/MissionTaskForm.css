@@ -58,3 +58,14 @@
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission-task-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
