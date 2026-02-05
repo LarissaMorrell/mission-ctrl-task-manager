@@ -1,4 +1,3 @@
-/* Mission Task Item */
 .mission-task-item {
   background: white;
   padding: 1.5rem;
@@ -29,6 +28,7 @@
 .mission-task-header {
   display: flex;
   justify-content: space-between;
+  flex-flow: row wrap-reverse;
   align-items: start;
   margin-bottom: 1rem;
 }
@@ -44,31 +44,27 @@
   gap: 0.5rem;
 }
 
-.mission-task-actions button {
-  padding: 0.5rem 1rem;
+.btn-icon {
+  padding: 0.5rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
+  background: transparent;
+  color: #999;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-edit {
-  background: #667eea;
-  color: white;
+.btn-icon:hover {
+  background: #f0f0f0;
+  color: #666;
 }
 
-.btn-edit:hover {
-  background: #5568d3;
-}
-
-.btn-delete {
-  background: #ef4444;
-  color: white;
-}
-
-.btn-delete:hover {
-  background: #dc2626;
+.btn-icon-danger:hover {
+  background: #fef2f2;
+  color: #ef4444;
 }
 
 .mission-task-description {
@@ -130,6 +126,9 @@
 }
 
 .mission-task-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-top: 1rem;
   border-top: 1px solid #f0f0f0;
 }
@@ -141,18 +140,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .app-header h1 {
-    font-size: 2rem;
-  }
-
-  .app-header p {
-    font-size: 1rem;
-  }
-
-  .app-main {
-    padding: 1rem;
-  }
-
   .mission-task-form {
     padding: 1.5rem;
   }
@@ -167,11 +154,7 @@
   }
 
   .mission-task-actions {
-    width: 100%;
-  }
-
-  .mission-task-actions button {
-    flex: 1;
+    width: auto;
   }
 
   .mission-task-meta {

@@ -1,4 +1,5 @@
 import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
+import { DeleteIcon, EditIcon } from '@/components/atoms/icons';
 import '@/components/molecules/MissionTaskItem.css';
 
 interface MissionTaskItemProps {
@@ -28,14 +29,6 @@ export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange 
     <div className={`mission-task-item ${getStatusClass(missionTask.status)}`}>
       <div className="mission-task-header">
         <h3>{missionTask.title}</h3>
-        <div className="mission-task-actions">
-          <button onClick={() => onEdit(missionTask.id)} className="btn-edit">
-            Edit
-          </button>
-          <button onClick={handleDelete} className="btn-delete">
-            Delete
-          </button>
-        </div>
       </div>
 
       {missionTask.description && (
@@ -67,6 +60,14 @@ export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange 
 
       <div className="mission-task-footer">
         <small>Created: {formatDate(missionTask.createdAt)}</small>
+        <div className="mission-task-actions">
+          <button onClick={() => onEdit(missionTask.id)} className="btn-icon" title="Edit">
+            <EditIcon />
+          </button>
+          <button onClick={handleDelete} className="btn-icon btn-icon-danger" title="Delete">
+            <DeleteIcon />
+          </button>
+        </div>
       </div>
     </div>
   );

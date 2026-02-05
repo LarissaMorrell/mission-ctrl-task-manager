@@ -1,17 +1,21 @@
 import { useState } from 'react';
+import { MissionTask } from './types/missionTask';
 import { useMissionTasks } from '@/hooks/useMissionTasks';
-import { MissionTaskForm } from '@/components/MissionTaskForm';
+import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
+import { GridView } from '@/components/molecules/GridView';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { AddTaskButton } from '@/components/atoms/AddTaskButton';
+import { FabButton } from '@/components/atoms/FabButton';
+import { AddIcon, CloseIcon } from '@/components/atoms/icons';
 import '@/App.css';
 
 function App() {
   const { missionTasks, loading, error, createMissionTask, updateMissionTask, deleteMissionTask } = useMissionTasks();
   const [editingId, setEditingId] = useState<number | null>(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
 
-  const handleSubmit = async (missionTask: any) => {
+  const handleSubmit = async (missionTask: MissionTask) => {
     if (editingId) {
       await updateMissionTask(editingId, missionTask);
       setEditingId(null);
@@ -59,10 +63,28 @@ function App() {
         <p>Simple and effective mission task management</p>
       </header>
 
-      <AddTaskButton isOpen={isFormVisible} onClick={toggleFormVisibility} />
+      <FabButton onClick={toggleFormVisibility} ariaLabel={isFormVisible ? 'Close form' : 'Add new mission task'}>
+        {isFormVisible ? <CloseIcon /> : <AddIcon />}
+      </FabButton>
 
       <main className="app-main">
         {error && <ErrorMessage message={error} />}
+
+        {/* View Toggle */}
+        <div className="view-toggle">
+          <button
+            className={viewMode === 'list' ? 'active' : ''}
+            onClick={() => setViewMode('list')}
+          >
+            List
+          </button>
+          <button
+            className={viewMode === 'grid' ? 'active' : ''}
+            onClick={() => setViewMode('grid')}
+          >
+            Board
+          </button>
+        </div>
 
         {/* Mission Task Form - Conditionally Rendered */}
         {isFormVisible && (
@@ -76,8 +98,15 @@ function App() {
         )}
         {loading ? (
           <div className="loading">Loading mission tasks...</div>
-        ) : (
+        ) : viewMode === 'list' ? (
           <MissionTaskList
+            missionTasks={missionTasks}
+            onEdit={handleEdit}
+            onDelete={deleteMissionTask}
+            onStatusChange={handleStatusChange}
+          />
+        ) : (
+          <GridView
             missionTasks={missionTasks}
             onEdit={handleEdit}
             onDelete={deleteMissionTask}
