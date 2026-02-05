@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { MissionTaskStatus } from '@/types/missionTask';
 import { MissionTask, CreateUpdateMissionTask } from '@/types/missionTask';
 import '@/components/organisms/MissionTaskForm.css';
 
@@ -11,7 +12,7 @@ interface MissionTaskFormProps {
 export function MissionTaskForm({ onSubmit, editingMissionTask, onCancel }: MissionTaskFormProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [status, setStatus] = useState<'Pending' | 'InProgress' | 'Complete'>('Pending');
+  const [status, setStatus] = useState<MissionTaskStatus>('Pending');
   const [dueDate, setDueDate] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -88,7 +89,7 @@ export function MissionTaskForm({ onSubmit, editingMissionTask, onCancel }: Miss
           <select
             id="status"
             value={status}
-            onChange={(e) => setStatus(e.target.value as 'Pending' | 'InProgress' | 'Complete')}
+            onChange={(e) => setStatus(e.target.value as MissionTaskStatus)}
           >
             <option value="Pending">Pending</option>
             <option value="InProgress">In Progress</option>

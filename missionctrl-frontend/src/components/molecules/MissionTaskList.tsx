@@ -1,4 +1,4 @@
-import { MissionTask } from '@/types/missionTask';
+import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
 import { MissionTaskItem } from '@/components/molecules/MissionTaskItem';
 import '@/components/molecules/MissionTaskList.css';
 
@@ -6,7 +6,7 @@ interface MissionTaskListProps {
   missionTasks: MissionTask[];
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
-  onStatusChange: (id: number, status: 'Pending' | 'InProgress' | 'Complete') => void;
+  onStatusChange: (id: number, status: MissionTaskStatus) => void;
 }
 
 export function MissionTaskList({ missionTasks, onEdit, onDelete, onStatusChange }: MissionTaskListProps) {

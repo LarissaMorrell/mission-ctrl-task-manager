@@ -41,7 +41,7 @@ export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange 
           <select
             value={missionTask.status}
             onChange={(e) =>
-              onStatusChange(missionTask.id, e.target.value as 'Pending' | 'InProgress' | 'Complete')
+              onStatusChange(missionTask.id, e.target.value as MissionTaskStatus)
             }
             className={getStatusClass(missionTask.status)}
           >

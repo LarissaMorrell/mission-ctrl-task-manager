@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MissionTask } from './types/missionTask';
+import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
 import { useMissionTasks } from '@/hooks/useMissionTasks';
 import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
@@ -44,7 +44,7 @@ function App() {
     }
   };
 
-  const handleStatusChange = async (id: number, status: 'Pending' | 'InProgress' | 'Complete') => {
+  const handleStatusChange = async (id: number, status: MissionTaskStatus) => {
     const missionTask = missionTasks.find((mt) => mt.id === id);
     if (missionTask) {
       await updateMissionTask(id, {
