@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { MissionTaskStatus } from '@/types/missionTask';
 import { MissionTask, CreateUpdateMissionTask } from '@/types/missionTask';
+import { PrimaryButton } from '@/components/atoms/PrimaryButton';
+import { SecondaryButton } from '@/components/atoms/SecondaryButton';
 import '@/components/organisms/MissionTaskForm.css';
 
 interface MissionTaskFormProps {
@@ -109,13 +111,11 @@ export function MissionTaskForm({ onSubmit, editingMissionTask, onCancel }: Miss
       </div>
 
       <div className="form-actions">
-        <button type="submit" disabled={submitting || !title.trim()}>
+        <PrimaryButton type="submit" disabled={submitting || !title.trim()}>
           {submitting ? 'Saving...' : editingMissionTask ? 'Update' : 'Add Mission Task'}
-        </button>
+        </PrimaryButton>
         {editingMissionTask && onCancel && (
-          <button type="button" onClick={onCancel} className="btn-secondary">
-            Cancel
-          </button>
+          <SecondaryButton onClick={onCancel}>Cancel</SecondaryButton>
         )}
       </div>
     </form>
