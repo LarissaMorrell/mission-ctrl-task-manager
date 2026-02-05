@@ -1,6 +1,6 @@
 import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
 import { MissionTaskItem } from '@/components/molecules/MissionTaskItem';
-import '@/components/molecules/GridView.css';
+import '@/components/organisms/GridView.css';
 
 interface GridViewProps {
   missionTasks: MissionTask[];

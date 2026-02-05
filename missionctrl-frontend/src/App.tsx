@@ -3,7 +3,7 @@ import { MissionTask } from './types/missionTask';
 import { useMissionTasks } from '@/hooks/useMissionTasks';
 import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
-import { GridView } from '@/components/molecules/GridView';
+import { GridView } from '@/components/organisms/GridView';
 import { ErrorMessage } from '@/components/molecules/ErrorMessage';
 import { FabButton } from '@/components/atoms/FabButton';
 import { AddIcon, CloseIcon } from '@/components/atoms/icons';
