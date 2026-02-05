@@ -1,4 +1,4 @@
-import '@/components/molecules/ErrorMessage.css';
+import '@/components/atoms/ErrorMessage.css';
 
 interface ErrorMessageProps {
   message: string;

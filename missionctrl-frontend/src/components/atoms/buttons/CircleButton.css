@@ -1,4 +1,4 @@
-.fab {
+.circle-button {
   /* Reset all default button styles */
   all: unset;
 
@@ -29,31 +29,31 @@
   z-index: 1000;
 }
 
-.fab svg {
+.circle-button svg {
   /* Ensure SVG is centered and doesn't shrink */
   flex-shrink: 0;
   display: block;
 }
 
-.fab:hover {
+.circle-button:hover {
   transform: scale(1.1) rotate(90deg);
   box-shadow: 0 6px 24px rgba(102, 126, 234, 0.6);
 }
 
-.fab:active {
+.circle-button:active {
   transform: scale(0.95);
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .fab {
+  .circle-button {
     width: 56px;
     height: 56px;
     right: 1rem;
     top: 6rem;
   }
 
-  .fab svg {
+  .circle-button svg {
     width: 24px;
     height: 24px;
   }

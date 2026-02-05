@@ -4,9 +4,9 @@ import { useMissionTasks } from '@/hooks/useMissionTasks';
 import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
 import { GridView } from '@/components/organisms/GridView';
-import { ErrorMessage } from '@/components/molecules/ErrorMessage';
-import { FabButton } from '@/components/atoms/FabButton';
-import { AddIcon, CloseIcon } from '@/components/atoms/icons';
+import { ErrorMessage } from '@/components/atoms/ErrorMessage';
+import { CircleButton } from '@/components/atoms/buttons/CircleButton';
+import { AddIcon } from '@/components/atoms/icons';
 import '@/App.css';
 
 function App() {
@@ -63,9 +63,11 @@ function App() {
         <p>Simple and effective mission task management</p>
       </header>
 
-      <FabButton onClick={toggleFormVisibility} ariaLabel={isFormVisible ? 'Close form' : 'Add new mission task'}>
-        {isFormVisible ? <CloseIcon /> : <AddIcon />}
-      </FabButton>
+      {!isFormVisible && (
+        <CircleButton onClick={toggleFormVisibility} ariaLabel="Add new mission task">
+          <AddIcon />
+        </CircleButton>
+      )}
 
       <main className="app-main">
         {error && <ErrorMessage message={error} />}

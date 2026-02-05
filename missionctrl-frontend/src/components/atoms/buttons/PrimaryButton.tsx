@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import '@/components/atoms/PrimaryButton.css';
+import '@/components/atoms/buttons/PrimaryButton.css';
 
 interface PrimaryButtonProps {
   children: ReactNode;

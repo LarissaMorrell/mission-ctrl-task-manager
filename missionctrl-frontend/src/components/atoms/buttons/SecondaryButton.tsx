@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import '@/components/atoms/SecondaryButton.css';
+import '@/components/atoms/buttons/SecondaryButton.css';
 
 interface SecondaryButtonProps {
   children: ReactNode;
