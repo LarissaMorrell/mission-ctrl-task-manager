@@ -8,7 +8,7 @@ interface PrimaryButtonProps {
   disabled?: boolean;
 }
 
-export function PrimaryButton({ children, onClick, type = 'button', disabled = false }: PrimaryButtonProps) {
+export default function PrimaryButton({ children, onClick, type = 'button', disabled = false }: PrimaryButtonProps) {
   return (
     <button type={type} onClick={onClick} disabled={disabled} className="btn-primary">
       {children}

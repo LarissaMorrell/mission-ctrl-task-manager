@@ -7,7 +7,7 @@ interface SecondaryButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
-export function SecondaryButton({ children, onClick, type = 'button' }: SecondaryButtonProps) {
+export default function SecondaryButton({ children, onClick, type = 'button' }: SecondaryButtonProps) {
   return (
     <button type={type} onClick={onClick} className="btn-secondary">
       {children}

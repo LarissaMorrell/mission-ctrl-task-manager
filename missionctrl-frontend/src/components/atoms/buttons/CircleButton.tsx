@@ -7,7 +7,7 @@ interface CircleButtonProps {
   ariaLabel: string;
 }
 
-export function CircleButton({ children, onClick, ariaLabel }: CircleButtonProps) {
+export default function CircleButton({ children, onClick, ariaLabel }: CircleButtonProps) {
   return (
     <button className="circle-button" onClick={onClick} aria-label={ariaLabel}>
       {children}

@@ -5,8 +5,8 @@ import { MissionTaskForm } from '@/components/organisms/MissionTaskForm';
 import { MissionTaskList } from '@/components/molecules/MissionTaskList';
 import { GridView } from '@/components/organisms/GridView';
 import { ErrorMessage } from '@/components/atoms/ErrorMessage';
-import { CircleButton } from '@/components/atoms/buttons/CircleButton';
-import { AddIcon } from '@/components/atoms/icons';
+import CircleButton from '@/components/atoms/buttons/CircleButton';
+import AddIcon from '@/components/atoms/icons/AddIcon';
 import '@/App.css';
 
 function App() {

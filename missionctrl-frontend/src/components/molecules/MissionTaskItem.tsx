@@ -1,5 +1,7 @@
 import { MissionTask, MissionTaskStatus } from '@/types/missionTask';
-import { DeleteIcon, EditIcon } from '@/components/atoms/icons';
+import EditIcon from '@/components/atoms/icons/EditIcon';
+import DeleteIcon from '@/components/atoms/icons/DeleteIcon';
+import { formatDate, getUrgencyLevel } from '@/utils/dateUtils';
 import '@/components/molecules/MissionTaskItem.css';
 
 interface MissionTaskItemProps {
