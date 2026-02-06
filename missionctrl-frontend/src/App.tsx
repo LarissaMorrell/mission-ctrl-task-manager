@@ -11,7 +11,7 @@ import '@/App.css';
 
 function App() {
   const { missionTasks, loading, error, createMissionTask, updateMissionTask, deleteMissionTask } = useMissionTasks();
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
 
@@ -26,7 +26,7 @@ function App() {
     }
   };
 
-  const handleEdit = (id: number) => {
+  const handleEdit = (id: string) => {
     setEditingId(id);
     setIsFormVisible(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -44,7 +44,7 @@ function App() {
     }
   };
 
-  const handleStatusChange = async (id: number, status: MissionTaskStatus) => {
+  const handleStatusChange = async (id: string, status: MissionTaskStatus) => {
     const missionTask = missionTasks.find((mt) => mt.id === id);
     if (missionTask) {
       await updateMissionTask(id, {
@@ -72,7 +72,7 @@ function App() {
       <main className="app-main">
         {error && <ErrorMessage message={error} />}
 
-        {/* View Toggle */}
+        {/* Toggle between type of views: List, Grid */}
         <div className="view-toggle">
           <button
             className={viewMode === 'list' ? 'active' : ''}
@@ -118,7 +118,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>Built with React, TypeScript, and .NET Core</p>
+        <p>© 2026 Larissa Morrell</p>
       </footer>
     </div>
   );

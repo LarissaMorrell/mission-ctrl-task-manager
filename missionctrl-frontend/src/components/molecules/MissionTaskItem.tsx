@@ -6,9 +6,9 @@ import '@/components/molecules/MissionTaskItem.css';
 
 interface MissionTaskItemProps {
   missionTask: MissionTask;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
-  onStatusChange: (id: number, status: MissionTaskStatus) => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
+  onStatusChange: (id: string, status: MissionTaskStatus) => void;
 }
 
 export function MissionTaskItem({ missionTask, onEdit, onDelete, onStatusChange }: MissionTaskItemProps) {

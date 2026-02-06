@@ -1,7 +1,7 @@
 export type MissionTaskStatus = 'Pending' | 'InProgress' | 'Complete';
 
 export interface MissionTask {
-  id: number;
+  id: string;
   title: string;
   description: string;
   status: MissionTaskStatus;

@@ -35,7 +35,7 @@ export function useMissionTasks() {
     }
   };
 
-  const updateMissionTask = async (id: number, missionTask: CreateUpdateMissionTask) => {
+  const updateMissionTask = async (id: string, missionTask: CreateUpdateMissionTask) => {
     try {
       const updated = await missionTaskApi.update(id, missionTask);
       setMissionTasks(prev => prev.map(mt => mt.id === id ? updated : mt));
@@ -46,7 +46,7 @@ export function useMissionTasks() {
     }
   };
 
-  const deleteMissionTask = async (id: number) => {
+  const deleteMissionTask = async (id: string) => {
     try {
       await missionTaskApi.delete(id);
       setMissionTasks(prev => prev.filter(mt => mt.id !== id));

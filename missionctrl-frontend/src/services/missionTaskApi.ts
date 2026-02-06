@@ -16,7 +16,7 @@ export const missionTaskApi = {
     return handleResponse<MissionTask[]>(response);
   },
 
-  getById: async (id: number): Promise<MissionTask> => {
+  getById: async (id: string): Promise<MissionTask> => {
     const response = await fetch(`${API_BASE_URL}/missionTasks/${id}`);
     return handleResponse<MissionTask>(response);
   },
@@ -30,7 +30,7 @@ export const missionTaskApi = {
     return handleResponse<MissionTask>(response);
   },
 
-  update: async (id: number, missionTask: CreateUpdateMissionTask): Promise<MissionTask> => {
+  update: async (id: string, missionTask: CreateUpdateMissionTask): Promise<MissionTask> => {
     const response = await fetch(`${API_BASE_URL}/missionTasks/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -39,7 +39,7 @@ export const missionTaskApi = {
     return handleResponse<MissionTask>(response);
   },
 
-  delete: async (id: number): Promise<void> => {
+  delete: async (id: string): Promise<void> => {
     const response = await fetch(`${API_BASE_URL}/missionTasks/${id}`, {
       method: 'DELETE',
     });
