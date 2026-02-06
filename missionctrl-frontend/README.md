@@ -2,31 +2,7 @@
 
 Modern, responsive React application for managing mission tasks, built with TypeScript and Vite.
 
-## Prerequisites
-
-- Node.js 18+ and npm
-
-## Setup & Run
-
-1. **Navigate to the project directory:**
-   ```bash
-   cd missionctrl-frontend
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-
-   The application will be available at `http://localhost:5173`
-
-4. **Ensure backend is running:**
-   The frontend expects the API at `http://localhost:5242`
+> For prerequisites and setup instructions, see the [main project README](../README.md).
 
 ## Build for Production
 
@@ -120,11 +96,15 @@ The application is fully responsive and optimized for:
 ## Future Enhancements
 
 If this were extended to production, consider adding:
-- Local storage for offline capability
 - Search and filtering functionality
 - Sorting options (by date, status, priority)
+- Status control logic (i.e. creation of new task with "completed" status, "pending" -> "completed")
+- Alert window within UI, instead of browser Alert Dialogs
+- Overlay for forms
 - Mission task categories or tags
 - Bulk operations (delete multiple, mark all complete)
 - Pagination for large mission task lists
+- Implement a Design System and/or SCSS for better style management
+- Local storage for offline capability
 - Dark mode support
 - Keyboard shortcuts

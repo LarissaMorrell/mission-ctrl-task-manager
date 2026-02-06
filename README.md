@@ -73,7 +73,11 @@ mission-ctrl-task-manager/
     │   ├── types/             # TypeScript interfaces
     │   ├── services/          # API communication
     │   ├── hooks/             # Custom React hooks
-    │   └── components/        # UI components
+    │   ├── utils/             # Utility functions
+    │   └── components/        # UI components (Atomic Design)
+    │       ├── atoms/         # Basic building blocks (buttons, icons)
+    │       ├── molecules/     # Combinations of atoms (MissionTaskItem, MissionTaskList)
+    │       └── organisms/     # Complex components (MissionTaskForm, GridView)
     └── README.md              # Frontend documentation
 ```
 
@@ -133,14 +137,12 @@ If this were a real production application, consider including:
 - Unit and integration tests
 
 ### Frontend
-- Search and filter UI
-- Sorting of tasks
+- Search, filter, and sorting UI
 - Drag-and-drop reordering
 - Configurable MissionTask statuses
 - Status control logic (i.e. creation of new task with "completed" status)
 - Alert window within UI, instead of browser Alert Dialogs
 - Overlay for forms
-- Date/timezone support
 - Unit and End-to-end tests
 
 ## 📚 Additional Documentation
@@ -162,13 +164,40 @@ If this were a real production application, consider including:
 3. **Custom hooks over Redux**: Less boilerplate, but wouldn't scale to very complex state
 4. **No caching layer**: Simpler architecture, acceptable for MVP performance
 
-## 🎓 What This Demonstrates
+### Scalability
 
-1. **Full-stack development** with modern technologies
-2. **RESTful API design** with proper HTTP semantics
-3. **Clean architecture** with separation of concerns
-4. **Type safety** with TypeScript and C#
-5. **Production thinking** (validation, errors, documentation) without over-engineering
-6. **Code quality** - readable, maintainable, and well-structured
-7. **User experience** - responsive design, error handling, loading states
-8. **Communication** - clear documentation and thoughtful decisions
+**Current State**
+
+The MVP architecture handles the current scope well:
+- `useMissionTasks` hook manages all CRUD state in a single location
+- SQLite provides zero-config persistence for local development
+- Minimal API keeps endpoint logic simple and readable in `Program.cs`
+- Atomic Design organizes components into predictable layers
+
+**If Future Enhancements Were Added**
+
+Adding **JWT authentication** would require:
+- Middleware in `Program.cs` for token validation
+- Protected route wrappers or context for auth state in React
+- Token refresh logic in `missionTaskApi.ts`
+
+Adding **pagination and filtering** would require:
+- Query parameters in the GET endpoint (`?page=1&status=Pending&sortBy=dueDate`)
+- `useMissionTasks` hook would need to track pagination state and filters
+- UI components for page navigation and filter controls
+
+Adding **drag-and-drop reordering** would require:
+- A `sortOrder` field on `MissionTask` model
+- Optimistic updates in state to prevent UI lag
+- Consider a library like `@dnd-kit` or `react-beautiful-dnd`
+
+Adding **search, filter, and sorting UI** would require:
+- Additional state in `useMissionTasks` or a separate `useFilters` hook
+- Debounced search input to reduce API calls
+- If dataset grows large, move filtering server-side with query parameters
+
+**When to Consider Larger Changes**
+- If state becomes deeply nested or shared across many components → consider Zustand
+- If task lists exceed hundreds of items → add virtualization with `react-window`
+- If deploying to production with multiple users → migrate SQLite to PostgreSQL
+
