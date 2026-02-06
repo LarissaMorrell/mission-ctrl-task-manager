@@ -25,11 +25,69 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Ensure database is created on startup
+// Ensure database is created on startup and seed if empty
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<MissionTaskDbContext>();
     db.Database.EnsureCreated();
+
+    // Seed database if empty
+    if (!db.MissionTasks.Any())
+    {
+        var today = DateTime.UtcNow.Date;
+
+        var seedTasks = new List<MissionTask>
+        {
+            new MissionTask
+            {
+                Title = "Plan quarterly review presentation",
+                Description = "Prepare slides and metrics for Q2 review meeting",
+                Status = MissionTaskStatus.Pending,
+                DueDate = today.AddMonths(2),
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new MissionTask
+            {
+                Title = "Complete API documentation",
+                Description = "Document all REST endpoints with examples",
+                Status = MissionTaskStatus.InProgress,
+                DueDate = today.AddDays(42), // 6 weeks
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new MissionTask
+            {
+                Title = "Submit daily status report",
+                Description = "Update team on current progress",
+                Status = MissionTaskStatus.InProgress,
+                DueDate = today,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new MissionTask
+            {
+                Title = "Review pull request #42",
+                Description = "Code review for authentication feature",
+                Status = MissionTaskStatus.Pending,
+                DueDate = today.AddDays(-1), // Yesterday
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new MissionTask
+            {
+                Title = "Deploy staging environment",
+                Description = "Push latest changes to staging server",
+                Status = MissionTaskStatus.Complete,
+                DueDate = today.AddDays(-7), // 1 week ago
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            }
+        };
+
+        db.MissionTasks.AddRange(seedTasks);
+        db.SaveChanges();
+    }
 }
 
 // Configure middleware
@@ -55,7 +113,7 @@ app.MapGet("/api/missionTasks", async (MissionTaskDbContext db) =>
 .WithName("GetAllMissionTasks");
 
 // GET /api/missionTasks/{id} - Get single mission task
-app.MapGet("/api/missionTasks/{id}", async (int id, MissionTaskDbContext db) =>
+app.MapGet("/api/missionTasks/{id}", async (Guid id, MissionTaskDbContext db) =>
 {
     var missionTask = await db.MissionTasks.FindAsync(id);
     return missionTask is null ? Results.NotFound() : Results.Ok(MapToDto(missionTask));
@@ -83,7 +141,7 @@ app.MapPost("/api/missionTasks", async (CreateUpdateMissionTaskDto dto, MissionT
 .WithName("CreateMissionTask");
 
 // PUT /api/missionTasks/{id} - Update existing mission task
-app.MapPut("/api/missionTasks/{id}", async (int id, CreateUpdateMissionTaskDto dto, MissionTaskDbContext db) =>
+app.MapPut("/api/missionTasks/{id}", async (Guid id, CreateUpdateMissionTaskDto dto, MissionTaskDbContext db) =>
 {
     var missionTask = await db.MissionTasks.FindAsync(id);
     if (missionTask is null) return Results.NotFound();
@@ -100,7 +158,7 @@ app.MapPut("/api/missionTasks/{id}", async (int id, CreateUpdateMissionTaskDto d
 .WithName("UpdateMissionTask");
 
 // DELETE /api/missionTasks/{id} - Delete mission task
-app.MapDelete("/api/missionTasks/{id}", async (int id, MissionTaskDbContext db) =>
+app.MapDelete("/api/missionTasks/{id}", async (Guid id, MissionTaskDbContext db) =>
 {
     var missionTask = await db.MissionTasks.FindAsync(id);
     if (missionTask is null) return Results.NotFound();
