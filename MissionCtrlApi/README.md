@@ -2,31 +2,7 @@
 
 Simple RESTful API for managing mission tasks using .NET Core 10, Entity Framework Core, and SQLite.
 
-## Prerequisites
-
-- .NET 10.0 SDK or later ([Download](https://dotnet.microsoft.com/download))
-
-## Setup & Run
-
-1. **Navigate to the project directory:**
-   ```bash
-   cd MissionCtrlApi
-   ```
-
-2. **Restore dependencies:**
-   ```bash
-   dotnet restore
-   ```
-
-3. **Run the application:**
-   ```bash
-   dotnet run
-   ```
-
-   The API will be available at `http://localhost:5242`
-
-4. **View API documentation:**
-   Open `http://localhost:5242/swagger` in your browser to see the interactive API documentation
+> For prerequisites and setup instructions, see the [main project README](../README.md).
 
 ## API Endpoints
 
@@ -43,7 +19,7 @@ Simple RESTful API for managing mission tasks using .NET Core 10, Entity Framewo
 ### MissionTask (Response)
 ```json
 {
-  "id": 1,
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "title": "Complete project",
   "description": "Finish the MissionCtrl app",
   "status": "InProgress",
@@ -65,11 +41,16 @@ Simple RESTful API for managing mission tasks using .NET Core 10, Entity Framewo
 
 **Status values:** `"Pending"`, `"InProgress"`, `"Complete"`
 
+## Documentation
+
+Swagger is used for testing purposes: Open `http://localhost:5242/swagger` for Swagger UI
+
+
 ## Database
 
 - SQLite database file (`missionTasks.db`) is created automatically on first run
-- Located in the project root directory
-- Can be deleted to reset the database
+- Pre-seeded with sample tasks for demonstration purposes
+- Delete the file to reset the database
 
 ## Project Structure
 
@@ -93,23 +74,7 @@ MissionCtrlApi/
 - **Swagger/OpenAPI documentation** for easy testing
 - **Entity Framework Core** with SQLite for data persistence
 - **Minimal API pattern** for clean, concise code
-
-## Development
-
-### Build the project:
-```bash
-dotnet build
-```
-
-### Run with hot reload:
-```bash
-dotnet watch run
-```
-
-### Clean build artifacts:
-```bash
-dotnet clean
-```
+- **UUID primary keys** for secure, non-sequential identifiers
 
 ## Notes
 

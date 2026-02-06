@@ -36,6 +36,27 @@ Frontend will run on `http://localhost:5173`
 **3. Open your browser:**
 Navigate to `http://localhost:5173` to use the application
 
+
+## 📊 API Documentation
+
+For detailed API documentation including endpoints, request/response models, and examples, see the [Backend Documentation](./MissionCtrlApi/README.md).
+
+## 🔧 Technology Stack
+
+### Backend
+- .NET Core 10 (Minimal API)
+- Entity Framework Core 10
+- SQLite
+- Swashbuckle (Swagger/OpenAPI)
+
+### Frontend
+- React 19
+- TypeScript
+- Vite
+- Native Fetch API
+- CSS3 with Flexbox/Grid
+
+
 ## 📁 Project Structure
 
 ```
@@ -76,136 +97,51 @@ mission-ctrl-task-manager/
 - ✅ Clean, documented code
 - ✅ Comprehensive README files
 
-## 🏗️ Architecture Decisions
-
-### Backend: Why Minimal API?
-- **Simpler than Controllers** for CRUD operations
-- **Less boilerplate** code to maintain
-- **Easier to understand** and maintain
-- **Sufficient** for this application scope
-
-### Backend: Why SQLite?
-- **Zero configuration** - no database server needed
-- **File-based** - easy to inspect and reset
-- **Perfect for demos** and MVP applications
-- **Production-capable** for small-to-medium apps
-
-### Frontend: Why Custom Hook instead of Redux?
-- **No over-engineering** - Redux adds unnecessary complexity
-- **Cleaner codebase** - no actions, reducers, or store configuration
-- **Sufficient state management** for this scope
-- **Faster development** with less boilerplate
-
-### Frontend: Why Fetch instead of Axios?
-- **Built-in** browser API (zero dependencies)
-- **Smaller bundle** size
-- **Sufficient** for basic CRUD operations
-- **Modern** async/await support
-
 ## 🎨 UI/UX Features
 
-- **Visual status indicators**: Color-coded borders (Blue → Orange → Green)
 - **Smooth interactions**: Hover effects and transitions
 - **Mobile-first design**: Fully responsive layout
+- **Layout Toggling**: View tasks within a single list, or grid format sorted by task status
+- **Visual status indicators**: Color-coded borders (Blue → Orange → Green)
 - **Clear feedback**: Loading states, error messages, and confirmations
-- **Intuitive editing**: Click edit to populate form, quick status changes
+- **Intuitive editing**: Click edit to populate form, or use dropdown for quick status changes
+- **Date urgency logic**: Visual color-coding for tasks due today, or tasks already overdue
 
-## 📊 API Documentation
 
-### Endpoints
+## 🚧 Architecture Decisions: What Was NOT Included (Intentionally)
 
-| Method | Endpoint | Description | Status Codes |
-|--------|----------|-------------|--------------|
-| GET | `/api/missionTasks` | Get all mission tasks | 200 |
-| GET | `/api/missionTasks/{id}` | Get single mission task | 200, 404 |
-| POST | `/api/missionTasks` | Create mission task | 201, 400 |
-| PUT | `/api/missionTasks/{id}` | Update mission task | 200, 400, 404 |
-| DELETE | `/api/missionTasks/{id}` | Delete mission task | 204, 404 |
+To keep the project appropriately scoped and to reduce complexity:
 
-### Example Request (POST /api/missionTasks)
-```json
-{
-  "title": "Complete project",
-  "description": "Finish the MissionCtrl app",
-  "status": "Pending",
-  "dueDate": "2026-02-28"
-}
-```
-
-### Example Response
-```json
-{
-  "id": 1,
-  "title": "Complete project",
-  "description": "Finish the MissionCtrl app",
-  "status": "Pending",
-  "dueDate": "2026-02-28T00:00:00",
-  "createdAt": "2026-02-02T14:30:00Z",
-  "updatedAt": "2026-02-02T14:30:00Z"
-}
-```
-
-## 🔧 Technology Stack
-
-### Backend
-- .NET Core 10 (Minimal API)
-- Entity Framework Core 10
-- SQLite
-- Swashbuckle (Swagger/OpenAPI)
-
-### Frontend
-- React 19
-- TypeScript
-- Vite
-- Native Fetch API
-- CSS3 with Flexbox/Grid
-
-## 📝 Design Principles
-
-1. **Keep it Simple** - Avoid over-engineering
-2. **Production-Ready** - Include validation, error handling, and documentation
-3. **Clean Code** - Clear naming, proper structure, and comments where needed
-4. **Type Safety** - Full TypeScript and C# type coverage
-5. **Separation of Concerns** - Clear boundaries between layers
-
-## 🚧 What Was NOT Included (Intentionally)
-
-To keep the project appropriately scoped:
-
-- ❌ **Authentication** - Adds significant complexity for MVP
-- ❌ **Redux** - Custom hooks sufficient for this scope
+- ❌ **Authentication** - Adds significant complexity, not ideal for a code test needing review
+- ❌ **Redux** - Custom hooks sufficient for this scope, less boilerplate
 - ❌ **Repository Pattern** - Over-engineering for Minimal API
 - ❌ **Unit Tests** - Kept focused on core functionality
 - ❌ **Docker** - Not required for local development
 - ❌ **CI/CD** - Kept focused on application development
 
+
 ## 🔮 Future Enhancements
 
-If this were a real production application, consider adding:
+If this were a real production application, consider including:
 
 ### Backend
 - User authentication with JWT
+  - Depending on needs of users, roles and policies as well
 - Pagination for large datasets
 - Filtering and sorting endpoints
-- Rate limiting
 - Logging and monitoring
 - Unit and integration tests
 
 ### Frontend
-- Local storage for offline capability
 - Search and filter UI
-- Task categories and tags
+- Sorting of tasks
 - Drag-and-drop reordering
-- Dark mode
-- Internationalization (i18n)
-- End-to-end tests
-
-### DevOps
-- Docker containerization
-- CI/CD pipeline
-- Environment configurations
-- Database migrations
-- Performance monitoring
+- Configurable MissionTask statuses
+- Status control logic (i.e. creation of new task with "completed" status)
+- Alert window within UI, instead of browser Alert Dialogs
+- Overlay for forms
+- Date/timezone support
+- Unit and End-to-end tests
 
 ## 📚 Additional Documentation
 
