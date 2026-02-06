@@ -197,7 +197,16 @@ Adding **search, filter, and sorting UI** would require:
 - If dataset grows large, move filtering server-side with query parameters
 
 **When to Consider Larger Changes**
-- If state becomes deeply nested or shared across many components → consider Zustand
-- If task lists exceed hundreds of items → add virtualization with `react-window`
-- If deploying to production with multiple users → migrate SQLite to PostgreSQL
 
+*Frontend*
+- If state becomes deeply nested or shared across many components → Consider useContext, Zustand, or Redux Toolkit
+- If task lists exceed hundreds of items → add virtualization with `react-window`
+- If bundle size impacts load time → implement lazy loading and code splitting
+- If offline support is needed → add a service worker with background sync
+
+*Backend*
+- If deploying with multiple concurrent users → migrate SQLite to PostgreSQL
+- If datasets grow large → add pagination to GET endpoints
+- If repeated queries slow response times → add Redis caching
+- If traffic spikes are expected → containerize with Docker for horizontal scaling
+- If queries slow down → add database indexes on `status`, `dueDate`, `createdAt`
