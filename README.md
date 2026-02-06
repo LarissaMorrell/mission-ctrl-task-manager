@@ -37,9 +37,10 @@ Frontend will run on `http://localhost:5173`
 Navigate to `http://localhost:5173` to use the application
 
 
-## 📊 API Documentation
+## 📚 Additional Documentation
 
-For detailed API documentation including endpoints, request/response models, and examples, see the [Backend Documentation](./MissionCtrlApi/README.md).
+- [Backend Documentation](./MissionCtrlApi/README.md) - Detailed API docs
+- [Frontend Documentation](./missionctrl-frontend/README.md) - Component details
 
 ## 🔧 Technology Stack
 
@@ -145,10 +146,6 @@ If this were a real production application, consider including:
 - Overlay for forms
 - Unit and End-to-end tests
 
-## 📚 Additional Documentation
-
-- [Backend Documentation](./MissionCtrlApi/README.md) - Detailed API docs
-- [Frontend Documentation](./missionctrl-frontend/README.md) - Component details
 
 ## 🤔 Assumptions & Trade-offs
 
